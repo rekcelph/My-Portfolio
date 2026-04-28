@@ -183,6 +183,21 @@ body {
     }
 }
 
+.profile-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
 .home-content p {
     font-size: 18px;
     color: #666;
