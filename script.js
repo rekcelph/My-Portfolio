@@ -1,3 +1,28 @@
+function openProfileModal() {
+    var modal = document.getElementById("profileModal");
+    var img = document.getElementById("myProfilePic");
+    var modalImg = document.getElementById("img01");
+    
+    modal.style.display = "block";
+    modalImg.src = img.src; // Sets the modal image to the same source as your profile pic
+}
+
+function closeProfileModal() {
+    var modal = document.getElementById("profileModal");
+    modal.style.display = "none";
+}
+
+// Close the modal if the user clicks anywhere outside the image
+window.onclick = function(event) {
+    var profileModal = document.getElementById("profileModal");
+    var contactModal = document.getElementById("contactModal");
+    if (event.target == profileModal) {
+        profileModal.style.display = "none";
+    }
+    if (event.target == contactModal) {
+        contactModal.style.display = "none";
+    }
+}
 // Cat Eyes Cursor Tracking
 const pupilInitialPositions = new Map();
 

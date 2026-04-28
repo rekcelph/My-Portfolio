@@ -533,18 +533,6 @@ body.dark-mode .project-card p {
     background-color: rgba(0, 0, 0, 0.5);
     animation: fadeIn 0.3s ease;
 }
-
-.modal-content {
-    background-color: white;
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    animation: slideUp 0.3s ease;
-}
-
 body.dark-mode .modal-content {
     background-color: #2a2a2a;
 }
@@ -640,4 +628,111 @@ body.dark-mode .modal-content textarea {
     .modal-content h2 {
         font-size: 24px;
     }
+}
+/* Container for the profile modal */
+#profileModal {
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Darker background to focus on the pic */
+    backdrop-filter: blur(5px); /* Optional: blurs the background for a modern look */
+}
+
+/* The actual image turned into a circle */
+#profileModal .modal-content {
+    cursor: default;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfectly centers the circle */
+    
+    width: 400px;
+    height: 400px;
+    object-fit: cover; /* This keeps your face from looking squished */
+    border-radius: 50%; /* The circle magic */
+    
+    border: 4px solid #667eea;
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
+    animation: zoom 0.4s ease;
+}
+.profile-pic {
+    cursor: pointer; /* Changes the arrow to a hand icon */
+    transition: all 0.3s ease; /* Ensures the movement is smooth */
+}
+
+.profile-pic:hover {
+    transform: scale(1.05); /* Slightly enlarges the image */
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4); /* Glow matching your theme */
+    border-color: #667eea; /* Changes border color on hover */
+}
+
+/* Caption styling */
+#caption {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Close button positioning */
+#profileModal .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    transition: 0.3s;
+}
+
+/* Responsiveness for mobile */
+@media (max-width: 500px) {
+    #profileModal .modal-content {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@keyframes zoom {
+    from { transform: translate(-50%, -50%) scale(0); }
+    to { transform: translate(-50%, -50%) scale(1); }
+}
+.img-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    cursor: pointer;
+}
+
+.img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(102, 126, 234, 0.3); /* Subtle tint */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+.img-overlay i {
+    color: white;
+    font-size: 40px;
+}
+
+.img-container:hover .img-overlay {
+    opacity: 1; /* Shows the icon on hover */
 }
