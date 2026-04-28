@@ -713,4 +713,23 @@ body.dark-mode .modal-content textarea {
     from { transform: translate(-50%, -50%) scale(0); }
     to { transform: translate(-50%, -50%) scale(1); }
 }
+.cat line {
+    transition: stroke 0.3s ease;
+}
 
+body.dark-mode .cat line {
+    stroke: #aaa; /* Slightly darker whiskers in dark mode so they don't glow too much */
+}
+@keyframes twitch {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(2deg); }
+}
+
+.cat line {
+    transform-origin: center;
+    animation: twitch 3s infinite ease-in-out;
+}
+body.dark-mode .cat path {
+    stroke: #ff9fb2; /* A slightly brighter pink to stand out against dark grays */
+    opacity: 0.8;
+}
