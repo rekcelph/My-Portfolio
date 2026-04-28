@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Cats in background -->
+    <div class="cats-container">
+        <div class="cat" style="left: 5%; top: 10%;">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+                <!-- Cat head -->
+                <circle cx="50" cy="50" r="35" fill="#FF9E64"/>
+                <!-- Ears -->
+                <polygon points="30,25 25,5 40,20" fill="#FF9E64"/>
+                <polygon points="70,25 75,5 60,20" fill="#FF9E64"/>
+                <!-- Left eye -->
+                <circle cx="40" cy="45" r="8" fill="#fff"/>
+                <circle cx="40" cy="45" r="5" fill="#333" class="pupil" data-eye="left"/>
+                <!-- Right eye -->
+                <circle cx="60" cy="45" r="8" fill="#fff"/>
+                <circle cx="60" cy="45" r="5" fill="#333" class="pupil" data-eye="right"/>
+                <!-- Nose -->
+                <polygon points="50,58 45,65 55,65" fill="#FFB6C1"/>
+            </svg>
+        </div>
+        <div class="cat" style="right: 8%; top: 25%;">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+                <!-- Cat head -->
+                <circle cx="50" cy="50" r="35" fill="#9B59B6"/>
+                <!-- Ears -->
+                <polygon points="30,25 25,5 40,20" fill="#9B59B6"/>
+                <polygon points="70,25 75,5 60,20" fill="#9B59B6"/>
+                <!-- Left eye -->
+                <circle cx="40" cy="45" r="8" fill="#fff"/>
+                <circle cx="40" cy="45" r="5" fill="#333" class="pupil" data-eye="left"/>
+                <!-- Right eye -->
+                <circle cx="60" cy="45" r="8" fill="#fff"/>
+                <circle cx="60" cy="45" r="5" fill="#333" class="pupil" data-eye="right"/>
+                <!-- Nose -->
+                <polygon points="50,58 45,65 55,65" fill="#FFB6C1"/>
+            </svg>
+        </div>
+        <div class="cat" style="left: 12%; bottom: 15%;">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+                <!-- Cat head -->
+                <circle cx="50" cy="50" r="35" fill="#3498DB"/>
+                <!-- Ears -->
+                <polygon points="30,25 25,5 40,20" fill="#3498DB"/>
+                <polygon points="70,25 75,5 60,20" fill="#3498DB"/>
+                <!-- Left eye -->
+                <circle cx="40" cy="45" r="8" fill="#fff"/>
+                <circle cx="40" cy="45" r="5" fill="#333" class="pupil" data-eye="left"/>
+                <!-- Right eye -->
+                <circle cx="60" cy="45" r="8" fill="#fff"/>
+                <circle cx="60" cy="45" r="5" fill="#333" class="pupil" data-eye="right"/>
+                <!-- Nose -->
+                <polygon points="50,58 45,65 55,65" fill="#FFB6C1"/>
+            </svg>
+        </div>
+        <div class="cat" style="right: 10%; bottom: 20%;">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+                <!-- Cat head -->
+                <circle cx="50" cy="50" r="35" fill="#F39C12"/>
+                <!-- Ears -->
+                <polygon points="30,25 25,5 40,20" fill="#F39C12"/>
+                <polygon points="70,25 75,5 60,20" fill="#F39C12"/>
+                <!-- Left eye -->
+                <circle cx="40" cy="45" r="8" fill="#fff"/>
+                <circle cx="40" cy="45" r="5" fill="#333" class="pupil" data-eye="left"/>
+                <!-- Right eye -->
+                <circle cx="60" cy="45" r="8" fill="#fff"/>
+                <circle cx="60" cy="45" r="5" fill="#333" class="pupil" data-eye="right"/>
+                <!-- Nose -->
+                <polygon points="50,58 45,65 55,65" fill="#FFB6C1"/>
+            </svg>
+        </div>
+    </div>
+
+    <header class="header">
+        <a href="#" class="logo">Portfolio.</a>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <div id="darkMode-icon"><i class='bx bx-moon'></i></div>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Hi, I'm <span>REKCEL M. ENDENCIA</span></h1>
+            <p>I'm a Computer Engineering student passionate about web development and design.</p>
+            <div class="btn-box">
+                <a href="Bonbon-CV.pdf" download class="btn">Download CV</a>
+                <a href="#contact" class="btn" onclick="openContactForm(event)">Let's Talk</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Who Am I?</h3>
+                    <p>I'm a passionate Computer Engineering student with a keen interest in web development, UI/UX design, and full-stack applications. I love turning ideas into interactive digital experiences.
+                        I also like joining hackathons and cybersecurity competitions to challenge myself and learn new skills. I'm always eager to collaborate on exciting projects and contribute to the tech community.
+                    </p>
+                    <h3>My Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <i class='bx bxl-html5'></i>
+                            <h4>HTML5</h4>
+                        </div>
+                        <div class="skill-card">
+                            <i class='bx bxl-css3'></i>
+                            <h4>CSS3</h4>
+                        </div>
+                        <div class="skill-card">
+                            <i class='bx bxl-javascript'></i>
+                            <h4>JavaScript</h4>
+                        </div>
+                        <div class="skill-card">
+                            <i class='bx bxl-react'></i>
+                            <h4>React</h4>
+                        </div>
+                        <div class="skill-card">
+                            <i class='bx bxl-nodejs'></i>
+                            <h4>Node.js</h4>
+                        </div>
+                        <div class="skill-card">
+                            <i class='bx bxl-python'></i>
+                            <h4>Python</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="projects-container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class='bx bxl-github'></i>
+                    </div>
+                    <h3>TrustForge</h3>
+                    <p>This project is still a developing technology since this web application has a fusion of AI agents and blockchain as the verifaction for supply chains. It is designed to forge trust between partner entities, establishing  reliable connections and transactions.</p>
+                    <div class="project-tags">
+                        <span class="tag">GitHub</span>
+                        <span class="tag">Open Source</span>
+                    </div>
+                    <a href="https://github.com/rekcelph/TrustForge.git" target="_blank" class="project-btn">View on GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class='bx bxs-home'></i>
+                    </div>
+                    <h3>Local Finding of Boarding Houses & Apartments</h3>
+                    <p>This project is a web platform designed to help users find and connect with boarding houses and apartments in their local area. Features listing management, search, and filtering capabilities.</p>
+                    <div class="project-tags">
+                        <span class="tag">Web Project</span>
+                        <span class="tag">Real Estate</span>
+                    </div>
+                    <a href="https://github.com/rekcelph/LocalFindingOfBoardingHousesAndApartments-WebsiteProject.git" target="_blank" class="project-btn">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeContactForm()">&times;</span>
+            <h2>Let's Get In Touch!</h2>
+            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
