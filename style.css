@@ -183,6 +183,21 @@ body {
     }
 }
 
+.profile-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
 .home-content p {
     font-size: 18px;
     color: #666;
@@ -508,32 +523,20 @@ body.dark-mode .project-card p {
 
 /* Modal Styles */
 .modal {
-    display: none;
+    display: none; /* JS will toggle this */
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.3s ease;
-}
+    background-color: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(5px); 
 
-.modal-content {
-    background-color: white;
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    animation: slideUp 0.3s ease;
+    display: none; 
+    justify-content: center;
+    align-items: center;
 }
-
-body.dark-mode .modal-content {
-    background-color: #2a2a2a;
-}
-
 .close {
     color: #aaa;
     float: right;
@@ -562,19 +565,26 @@ body.dark-mode .modal-content h2 {
 }
 
 .modal-content form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    background-color: #4f3a86; /* Matches your screenshot color */
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 380px; /* Constrains the width to a "box" shape */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
 }
 
 .modal-content input,
 .modal-content textarea {
-    padding: 12px 15px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 14px;
-    transition: border-color 0.3s ease;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    border: none;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 body.dark-mode .modal-content input,
@@ -625,4 +635,101 @@ body.dark-mode .modal-content textarea {
     .modal-content h2 {
         font-size: 24px;
     }
+}
+/* Container for the profile modal */
+#profileModal {
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Darker background to focus on the pic */
+    backdrop-filter: blur(5px); /* Optional: blurs the background for a modern look */
+}
+
+/* The actual image turned into a circle */
+#profileModal .modal-content {
+    cursor: default;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfectly centers the circle */
+    
+    width: 400px;
+    height: 400px;
+    object-fit: cover; /* This keeps your face from looking squished */
+    border-radius: 50%; /* The circle magic */
+    
+    border: 4px solid #667eea;
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
+    animation: zoom 0.4s ease;
+}
+.profile-pic {
+    cursor: pointer; /* Changes the arrow to a hand icon */
+    transition: all 0.3s ease; /* Ensures the movement is smooth */
+}
+
+.profile-pic:hover {
+    transform: scale(1.05); /* Slightly enlarges the image */
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4); /* Glow matching your theme */
+    border-color: #667eea; /* Changes border color on hover */
+}
+
+/* Caption styling */
+#caption {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Close button positioning */
+#profileModal .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    transition: 0.3s;
+}
+
+/* Responsiveness for mobile */
+@media (max-width: 500px) {
+    #profileModal .modal-content {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@keyframes zoom {
+    from { transform: translate(-50%, -50%) scale(0); }
+    to { transform: translate(-50%, -50%) scale(1); }
+}
+.cat line {
+    transition: stroke 0.3s ease;
+}
+
+body.dark-mode .cat line {
+    stroke: #aaa; /* Slightly darker whiskers in dark mode so they don't glow too much */
+}
+@keyframes twitch {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(2deg); }
+}
+
+.cat line {
+    transform-origin: center;
+    animation: twitch 3s infinite ease-in-out;
+}
+body.dark-mode .cat path {
+    stroke: #ff9fb2; /* A slightly brighter pink to stand out against dark grays */
+    opacity: 0.8;
 }

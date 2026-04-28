@@ -1,3 +1,28 @@
+function openProfileModal() {
+    var modal = document.getElementById("profileModal");
+    var img = document.getElementById("myProfilePic");
+    var modalImg = document.getElementById("img01");
+    
+    modal.style.display = "block";
+    modalImg.src = img.src; // Sets the modal image to the same source as your profile pic
+}
+
+function closeProfileModal() {
+    var modal = document.getElementById("profileModal");
+    modal.style.display = "none";
+}
+
+// Close the modal if the user clicks anywhere outside the image
+window.onclick = function(event) {
+    var profileModal = document.getElementById("profileModal");
+    var contactModal = document.getElementById("contactModal");
+    if (event.target == profileModal) {
+        profileModal.style.display = "none";
+    }
+    if (event.target == contactModal) {
+        contactModal.style.display = "none";
+    }
+}
 // Cat Eyes Cursor Tracking
 const pupilInitialPositions = new Map();
 
@@ -135,30 +160,45 @@ buttons.forEach(button => {
 });
 
 // Contact Form Modal
+// Function to open the Contact Modal
 function openContactForm(e) {
-    e.preventDefault();
-    document.getElementById('contactModal').style.display = 'block';
+    if (e) e.preventDefault(); // Prevents the page from jumping to the #contact ID
+    const modal = document.getElementById('contactModal');
+    if (modal) {
+        modal.style.display = 'flex';
+    }
 }
-
+// Function to close the Contact Modal
 function closeContactForm() {
-    document.getElementById('contactModal').style.display = 'none';
+    const modal = document.getElementById('contactModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
 }
-
+// Handle Form Submission
 function handleFormSubmit(e) {
     e.preventDefault();
     const form = e.target;
-    const formData = new FormData(form);
     
-    // You can replace this with actual form submission
-    alert('Thank you for your message! I\'ll get back to you soon.');
+    // In a real scenario, you'd send this to a backend (like a Python/Flask script)
+    alert('Thank you for reaching out! Rekcel will get back to you soon.');
+    
     form.reset();
     closeContactForm();
 }
 
 // Close modal when clicking outside
 window.addEventListener('click', (e) => {
-    const modal = document.getElementById('contactModal');
-    if (e.target === modal) {
-        modal.style.display = 'none';
+    const contactModal = document.getElementById('contactModal');
+    const profileModal = document.getElementById('profileModal');
+    
+    // Close contact modal if background is clicked
+    if (e.target === contactModal) {
+        contactModal.style.display = 'none';
+    }
+    
+    // Close profile modal if background is clicked
+    if (e.target === profileModal) {
+        profileModal.style.display = 'none';
     }
 });
