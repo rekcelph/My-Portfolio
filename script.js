@@ -1,3 +1,19 @@
+function openFullImage(imagePath, isProfile = false) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("fullImg");
+    
+    modal.style.display = "flex";
+    modalImg.src = imagePath;
+
+    // If it's the profile pic, make it a circle. If not, keep it rectangular.
+    if (isProfile) {
+        modalImg.style.borderRadius = "50%";
+        modalImg.style.aspectRatio = "1/1";
+    } else {
+        modalImg.style.borderRadius = "10px"; // Normal certificate style
+        modalImg.style.aspectRatio = "auto";
+    }
+}
 function openProfileModal() {
     var modal = document.getElementById("profileModal");
     var img = document.getElementById("myProfilePic");
