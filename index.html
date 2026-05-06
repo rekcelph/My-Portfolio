@@ -3,176 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>EndenciaRekcel</title>
+    <!-- Bulma CSS Framework -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Custom overrides -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Cats in background -->
+
+    <!-- ── Cats Background (unchanged) ── -->
     <div class="cats-container">
         <div class="cat" style="left: 5%; top: 10%;">
             <svg viewBox="0 0 100 100" width="100" height="100">
-                <!-- Cat head -->
                 <circle cx="50" cy="50" r="35" fill="#FF9E64"/>
-                <!-- Ears -->
                 <polygon points="30,25 25,5 40,20" fill="#FF9E64"/>
                 <polygon points="70,25 75,5 60,20" fill="#FF9E64"/>
-                <!-- Left eye -->
                 <circle cx="40" cy="45" r="8" fill="#fff"/>
                 <circle cx="40" cy="45" r="5" fill="#333" class="pupil" data-eye="left"/>
-                <!-- Right eye -->
                 <circle cx="60" cy="45" r="8" fill="#fff"/>
                 <circle cx="60" cy="45" r="5" fill="#333" class="pupil" data-eye="right"/>
-                <!-- Nose -->
                 <polygon points="50,58 45,65 55,65" fill="#FFB6C1"/>
-                <!-- Whiskers -->
-                <line x1="40" y1="62" x2="15" y2="58" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="40" y1="65" x2="15" y2="65" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="40" y1="68" x2="15" y2="72" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="62" x2="85" y2="58" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="65" x2="85" y2="65" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="68" x2="85" y2="72" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <!-- mouth -->
-                 <path d="M42,68 Q50,75 50,68 Q50,75 58,68" fill="none" stroke="#FFB6C1" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="40" y1="62" x2="15" y2="58" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="40" y1="65" x2="15" y2="65" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="40" y1="68" x2="15" y2="72" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="62" x2="85" y2="58" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="65" x2="85" y2="65" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="68" x2="85" y2="72" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <path d="M42,68 Q50,75 50,68 Q50,75 58,68" fill="none" stroke="#FFB6C1" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
         </div>
         <div class="cat" style="right: 8%; top: 25%;">
             <svg viewBox="0 0 100 100" width="100" height="100">
-                <!-- Cat head -->
                 <circle cx="50" cy="50" r="35" fill="#9B59B6"/>
-                <!-- Ears -->
                 <polygon points="30,25 25,5 40,20" fill="#9B59B6"/>
                 <polygon points="70,25 75,5 60,20" fill="#9B59B6"/>
-                <!-- Left eye -->
                 <circle cx="40" cy="45" r="8" fill="#fff"/>
                 <circle cx="40" cy="45" r="5" fill="#333" class="pupil" data-eye="left"/>
-                <!-- Right eye -->
                 <circle cx="60" cy="45" r="8" fill="#fff"/>
                 <circle cx="60" cy="45" r="5" fill="#333" class="pupil" data-eye="right"/>
-                <!-- Nose -->
                 <polygon points="50,58 45,65 55,65" fill="#FFB6C1"/>
-                <!-- Whiskers -->
-                <line x1="40" y1="62" x2="15" y2="58" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="40" y1="65" x2="15" y2="65" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="40" y1="68" x2="15" y2="72" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="62" x2="85" y2="58" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="65" x2="85" y2="65" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="68" x2="85" y2="72" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <!-- Mouth -->
-                <path d="M42,68 Q50,75 58,68" fill="none" stroke="#FFB6C1" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="40" y1="62" x2="15" y2="58" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="40" y1="65" x2="15" y2="65" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="40" y1="68" x2="15" y2="72" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="62" x2="85" y2="58" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="65" x2="85" y2="65" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="68" x2="85" y2="72" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <path d="M42,68 Q50,75 58,68" fill="none" stroke="#FFB6C1" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
         </div>
         <div class="cat" style="left: 12%; bottom: 15%;">
             <svg viewBox="0 0 100 100" width="100" height="100">
-                <!-- Cat head -->
                 <circle cx="50" cy="50" r="35" fill="#3498DB"/>
-                <!-- Ears -->
                 <polygon points="30,25 25,5 40,20" fill="#3498DB"/>
                 <polygon points="70,25 75,5 60,20" fill="#3498DB"/>
-                <!-- Left eye -->
                 <circle cx="40" cy="45" r="8" fill="#fff"/>
                 <circle cx="40" cy="45" r="5" fill="#333" class="pupil" data-eye="left"/>
-                <!-- Right eye -->
                 <circle cx="60" cy="45" r="8" fill="#fff"/>
                 <circle cx="60" cy="45" r="5" fill="#333" class="pupil" data-eye="right"/>
-                <!-- Nose -->
                 <polygon points="50,58 45,65 55,65" fill="#FFB6C1"/>
-                <!-- Whiskers -->
-                <line x1="40" y1="62" x2="15" y2="58" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="40" y1="65" x2="15" y2="65" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="40" y1="68" x2="15" y2="72" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="62" x2="85" y2="58" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="65" x2="85" y2="65" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="68" x2="85" y2="72" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <path d="M42,68 Q50,75 50,68 Q50,75 58,68" fill="none" stroke="#FFB6C1" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="40" y1="62" x2="15" y2="58" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="40" y1="65" x2="15" y2="65" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="40" y1="68" x2="15" y2="72" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="62" x2="85" y2="58" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="65" x2="85" y2="65" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="68" x2="85" y2="72" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <path d="M42,68 Q50,75 50,68 Q50,75 58,68" fill="none" stroke="#FFB6C1" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
         </div>
         <div class="cat" style="right: 10%; bottom: 20%;">
             <svg viewBox="0 0 100 100" width="100" height="100">
-                <!-- Cat head -->
                 <circle cx="50" cy="50" r="35" fill="#F39C12"/>
-                <!-- Ears -->
                 <polygon points="30,25 25,5 40,20" fill="#F39C12"/>
                 <polygon points="70,25 75,5 60,20" fill="#F39C12"/>
-                <!-- Left eye -->
                 <circle cx="40" cy="45" r="8" fill="#fff"/>
                 <circle cx="40" cy="45" r="5" fill="#333" class="pupil" data-eye="left"/>
-                <!-- Right eye -->
                 <circle cx="60" cy="45" r="8" fill="#fff"/>
                 <circle cx="60" cy="45" r="5" fill="#333" class="pupil" data-eye="right"/>
-                <!-- Nose -->
                 <polygon points="50,58 45,65 55,65" fill="#FFB6C1"/>
-                <!-- Whiskers -->
-                <line x1="40" y1="62" x2="15" y2="58" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="40" y1="65" x2="15" y2="65" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="40" y1="68" x2="15" y2="72" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="62" x2="85" y2="58" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="65" x2="85" y2="65" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <line x1="60" y1="68" x2="85" y2="72" stroke="white" stroke-width="1.5" opacity="0.6" />
-                <!-- mouth -->
-                 <path d="M42,68 Q50,75 50,68 Q50,75 58,68" fill="none" stroke="#FFB6C1" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="40" y1="62" x2="15" y2="58" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="40" y1="65" x2="15" y2="65" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="40" y1="68" x2="15" y2="72" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="62" x2="85" y2="58" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="65" x2="85" y2="65" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="68" x2="85" y2="72" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                <path d="M42,68 Q50,75 50,68 Q50,75 58,68" fill="none" stroke="#FFB6C1" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
         </div>
     </div>
+    <!-- ── NAVBAR (Bulma navbar component) ── -->
+    <!-- ── Scroll Progress Bar ── -->
+    <div id="scrollProgress"></div>
 
-    <header class="header">
-        <a href="#" class="logo">MyPortfolio.</a>
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#contact">Contact</a>
-            <div id="darkMode-icon"><i class='bx bx-moon'></i></div>
-        </nav>
-    </header>
+    <nav class="navbar is-white is-fixed-top custom-header" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="#" class="navbar-item logo">MyPortfolio.</a>
+            <!-- Burger for mobile -->
+            <a role="button" class="navbar-burger" id="navBurger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navMenu" class="navbar-menu">
+            <div class="navbar-end navbar-links">
+                <a href="#home"          class="navbar-item nav-link active">Home</a>
+                <a href="#about"         class="navbar-item nav-link">About</a>
+                <a href="#projects"      class="navbar-item nav-link">Projects</a>
+                <a href="#certifications" class="navbar-item nav-link">Certifications</a>
+                <a href="#contact"       class="navbar-item nav-link">Contact</a>
+                <div class="navbar-item">
+                    <div id="darkMode-icon"><i class='bx bx-moon'></i></div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <section class="home" id="home">
-        <div class="home-content">
-    <div class="profile-image">
-    <img src="ImageProfile\e04dc77f-0937-41cc-aa64-5c00219ccd5f.jpg" class="profile-pic" onclick="openFullImage(this.src)">
-</div>
-            <h1>Hi, I'm <span>REKCEL M. ENDENCIA</span></h1>
-            <p>I'm a Computer Engineer that is willing to learn and grow in the field of technology.</p>
-            <div class="btn-box">
-                <a href="MyCV/Bonbon-CV.pdf" download class="btn">Download CV</a>
+    <!-- ── HOME (Bulma hero) ── -->
+    <section class="hero is-fullheight-with-navbar home-hero" id="home">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="profile-image">
+                    <img src="ImageProfile/e04dc77f-0937-41cc-aa64-5c00219ccd5f.jpg"
+                        class="profile-pic"
+                        onclick="openFullImage(this.src, true)">
+                </div> 
+                <h1 class="title is-2 home-title">
+                    Hi, I'm <span class="gradient-text glitch-text" data-text="REKCEL M. ENDENCIA">REKCEL M. ENDENCIA</span>
+                </h1>
+                <p class="subtitle is-5 home-subtitle">
+                    I'm a Computer Engineer that is willing to learn and grow in the field of technology.
+                </p>
+                <div class="buttons is-centered mt-5">
+                    <a href="MyCV/Bonbon-CV.pdf" download class="button btn is-outlined is-medium magnetic">
+                        Download CV
+                    </a>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Who Am I?</h3>
-                    <p>I'm a passionate Computer Engineer with a strong interest in software development, cybersecurity, and emerging technologies. I enjoy exploring new programming languages and frameworks to expand my skill set.
-                        I also like joining hackathons and cybersecurity competitions to challenge myself and learn new skills. I'm always eager to collaborate on exciting projects and contribute to the tech community.
-                    </p>
-                    <h3>My Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card">
+
+    <!-- ── ABOUT (Bulma section + columns) ── -->
+    <section class="section about" id="about">
+        <div class="container about-container">
+            <h2 class="title is-2 section-heading has-text-centered">About Me</h2>
+            <div class="content about-text">
+                <h3 class="title is-4">Who Am I?</h3>
+                <p>
+                    I'm a passionate Computer Engineer with a strong interest in software development,
+                    cybersecurity, and emerging technologies. I enjoy exploring new programming languages
+                    and frameworks to expand my skill set. I also like joining hackathons and cybersecurity
+                    competitions to challenge myself and learn new skills. I'm always eager to collaborate
+                    on exciting projects and contribute to the tech community.
+                </p>
+                <h3 class="title is-4 mt-5">My Skills</h3>
+                <!-- Bulma columns as skills grid -->
+                <div class="columns is-multiline is-variable is-3 skills-grid">
+                    <div class="column is-2-desktop is-4-tablet is-6-mobile">
+                        <div class="skill-card has-text-centered">
                             <i class='bx bxl-html5'></i>
                             <h4>HTML5</h4>
                         </div>
-                        <div class="skill-card">
+                    </div>
+                    <div class="column is-2-desktop is-4-tablet is-6-mobile">
+                        <div class="skill-card has-text-centered">
                             <i class='bx bxl-css3'></i>
                             <h4>CSS3</h4>
                         </div>
-                        <div class="skill-card">
+                    </div>
+                    <div class="column is-2-desktop is-4-tablet is-6-mobile">
+                        <div class="skill-card has-text-centered">
                             <i class='bx bxl-javascript'></i>
                             <h4>JavaScript</h4>
                         </div>
-                        <div class="skill-card">
+                    </div>
+                    <div class="column is-2-desktop is-4-tablet is-6-mobile">
+                        <div class="skill-card has-text-centered">
                             <i class='bx bxl-react'></i>
                             <h4>React</h4>
                         </div>
-                        <div class="skill-card">
+                    </div>
+                    <div class="column is-2-desktop is-4-tablet is-6-mobile">
+                        <div class="skill-card has-text-centered">
                             <i class='bx bxl-nodejs'></i>
                             <h4>Node.js</h4>
                         </div>
-                        <div class="skill-card">
+                    </div>
+                    <div class="column is-2-desktop is-4-tablet is-6-mobile">
+                        <div class="skill-card has-text-centered">
                             <i class='bx bxl-python'></i>
                             <h4>Python</h4>
                         </div>
@@ -182,130 +201,162 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="projects-container">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class='bx bxl-github'></i>
+    <!-- ── PROJECTS (Bulma cards inside columns) ── -->
+    <section class="section projects" id="projects">
+        <div class="container projects-container">
+            <h2 class="title is-2 section-heading has-text-centered">My Projects</h2>
+            <div class="columns is-multiline">
+
+                <!-- Project Card 1 -->
+                <div class="column is-half">
+                    <div class="card project-card h-100 tilt-card">
+                        <div class="card-content">
+                            <div class="project-header mb-4">
+                                <i class='bx bxl-github'></i>
+                            </div>
+                            <p class="title is-5">TrustForge</p>
+                            <p class="content">
+                                This project is still a developing technology since this web application
+                                has a fusion of AI agents and blockchain as the verification for supply
+                                chains. It is designed to forge trust between partner entities,
+                                establishing reliable connections and transactions.
+                            </p>
+                            <div class="tags project-tags mb-3">
+                                <span class="tag">GitHub</span>
+                                <span class="tag">Open Source</span>
+                            </div>
+                            <a href="https://github.com/rekcelph/TrustForge.git"
+                               target="_blank" class="project-btn magnetic">View on GitHub</a>
+                        </div>
                     </div>
-                    <h3>TrustForge</h3>
-                    <p>This project is still a developing technology since this web application has a fusion of AI agents and blockchain as the verifaction for supply chains. It is designed to forge trust between partner entities, establishing  reliable connections and transactions.</p>
-                    <div class="project-tags">
-                        <span class="tag">GitHub</span>
-                        <span class="tag">Open Source</span>
-                    </div>
-                    <a href="https://github.com/rekcelph/TrustForge.git" target="_blank" class="project-btn">View on GitHub</a>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class='bx bxs-home'></i>
+                <!-- Project Card 2 -->
+                <div class="column is-half">
+                    <div class="card project-card h-100 tilt-card">
+                        <div class="card-content">
+                            <div class="project-header mb-4">
+                                <i class='bx bxs-home'></i>
+                            </div>
+                            <p class="title is-5">Local Finding of Boarding Houses &amp; Apartments</p>
+                            <p class="content">
+                                This project is a web platform designed to help users find and connect
+                                with boarding houses and apartments in their local area. Features listing
+                                management, search, and filtering capabilities.
+                            </p>
+                            <div class="tags project-tags mb-3">
+                                <span class="tag">Web Project</span>
+                                <span class="tag">Real Estate</span>
+                            </div>
+                            <a href="https://github.com/rekcelph/LocalFindingOfBoardingHousesAndApartments-WebsiteProject.git"
+                               target="_blank" class="project-btn magnetic">View on GitHub</a>
+                        </div>
                     </div>
-                    <h3>Local Finding of Boarding Houses & Apartments</h3>
-                    <p>This project is a web platform designed to help users find and connect with boarding houses and apartments in their local area. Features listing management, search, and filtering capabilities.</p>
-                    <div class="project-tags">
-                        <span class="tag">Web Project</span>
-                        <span class="tag">Real Estate</span>
-                    </div>
-                    <a href="https://github.com/rekcelph/LocalFindingOfBoardingHousesAndApartments-WebsiteProject.git" target="_blank" class="project-btn">View on GitHub</a>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section class="certifications" id="certifications">
-    <div class="certifications-container">
-        <h2>Certifications</h2>
-        
-        <div class="certifications-grid">
-            <!-- Card 1 -->
-            <div class="certification-card" onclick="openFullImage('IMAGES/IMAGE1.jpg')">
-                <div class="cert-img-container">
-                    <img src="IMAGES\IMAGE1.jpg">
-                    <div class="cert-overlay">
-                        <i class='bx bx-zoom-in' onclick="openFullImage(this.src)"></i>
-                    </div>
-                </div>
-            </div>
+    <!-- ── CERTIFICATIONS (Bulma columns) ── -->
+    <section class="section certifications" id="certifications">
+        <div class="container certifications-container">
+            <h2 class="title is-2 section-heading has-text-centered">Certifications</h2>
+            <div class="columns is-multiline">
 
-            <!-- Card 2 -->
-            <div class="certification-card">
-                <div class="cert-img-container" onclick="openFullImage('IMAGES/IMAGE2.jpg')">
-                    <img src="IMAGES\IMAGE2.jpg" alt="Meta Front-End Certificate">
-                    <div class="cert-overlay">
-                        <i class='bx bx-zoom-in' onclick="openFullImage(this.src)"></i>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="certification-card tilt-card" onclick="openFullImage('IMAGES/IMAGE1.jpg')">
+                        <div class="cert-img-container">
+                            <img src="IMAGES/IMAGE1.jpg" alt="Certificate 1">
+                            <div class="cert-overlay">
+                                <i class='bx bx-zoom-in'></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="certification-card tilt-card" onclick="openFullImage('IMAGES/IMAGE2.jpg')">
+                        <div class="cert-img-container">
+                            <img src="IMAGES/IMAGE2.jpg" alt="Certificate 2">
+                            <div class="cert-overlay">
+                                <i class='bx bx-zoom-in'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Card 3 -->
-            <div class="certification-card">
-                <div class="cert-img-container" onclick="openFullImage('IMAGES/IMAGE3.jpg')">
-                    <img src="IMAGES\IMAGE3.jpg" alt="Meta Front-End Certificate">
-                    <div class="cert-overlay">
-                        <i class='bx bx-zoom-in' onclick="openFullImage(this.src)"></i>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="certification-card tilt-card" onclick="openFullImage('IMAGES/IMAGE3.jpg')">
+                        <div class="cert-img-container">
+                            <img src="IMAGES/IMAGE3.jpg" alt="Certificate 3">
+                            <div class="cert-overlay">
+                                <i class='bx bx-zoom-in'></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 4 -->
-            <div class="certification-card">
-                <div class="cert-img-container" onclick="openFullImage('IMAGES/IMAGE4.jpg')">
-                    <img src="IMAGES\IMAGE4.jpg" alt="Meta Front-End Certificate">
-                    <div class="cert-overlay">
-                        <i class='bx bx-zoom-in' onclick="openFullImage(this.src)"></i>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="certification-card tilt-card" onclick="openFullImage('IMAGES/IMAGE4.jpg')">
+                        <div class="cert-img-container">
+                            <img src="IMAGES/IMAGE4.jpg" alt="Certificate 4">
+                            <div class="cert-overlay">
+                                <i class='bx bx-zoom-in'></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 5 -->
-            <div class="certification-card">
-                <div class="cert-img-container" onclick="openFullImage('IMAGES/IMAGE5.jpg')">
-                    <img src="IMAGES\IMAGE5.jpg" alt="Meta Front-End Certificate">
-                    <div class="cert-overlay">
-                        <i class='bx bx-zoom-in' onclick="openFullImage(this.src)"></i>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="certification-card tilt-card" onclick="openFullImage('IMAGES/IMAGE5.jpg')">
+                        <div class="cert-img-container">
+                            <img src="IMAGES/IMAGE5.jpg" alt="Certificate 5">
+                            <div class="cert-overlay">
+                                <i class='bx bx-zoom-in'></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
-    </div>
-</section>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    <!-- Contact Section -->
-<section class="contact" id="contact">
-    <div class="contact-container">
-        <h2>Contact Information</h2>
-        <div class="contact-grid">
-            <div class="contact-item">
+    </section>
+
+    <!-- ── CONTACT (Bulma level) ── -->
+    <section class="section contact" id="contact">
+        <div class="container has-text-centered">
+            <h2 class="title is-2 section-heading">Contact Information</h2>
+            <div class="level contact-level mt-5">
+                <div class="level-item has-text-centered contact-item">
+        <a href="mailto:rekcelph@gmail.com" class="contact-link">
                 <i class='bx bxs-envelope'></i>
                 <p>rekcelph@gmail.com</p>
+        </a>
             </div>
-            <div class="contact-item">
-                <i class='bx bxs-phone'></i>
-                <p>+63 992 483 5721</p>
-            </div>
-            <div class="contact-item">
+        <div class="level-item has-text-centered contact-item">
+            <a href="https://x.com/RekcelP42299" class="contact-link">
+                <i class='bx bxl-twitter'></i>
+                <p>Rekcel_PH</p>
+            </a>
+                </div>
+            <div class="level-item has-text-centered contact-item">
+                <a href="https://www.facebook.com/bonbon.endencia" target="_blank" class="contact-link">
                 <i class='bx bxl-facebook'></i>
-                <p>BonBon Endencia</p>
+            <p>BonBon Endencia</p>
+        </a>
+    </div>
             </div>
         </div>
+    </section>
+
+    <!-- ── IMAGE MODAL ── -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="fullImg">
+        <div id="modalCaption"></div>
     </div>
-</section>
-</div>
+
     <script src="script.js"></script>
-    <!-- The Modal Overlay -->
-<div id="imageModal" class="modal" onclick="this.style.display='none'">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="fullImg">
-    <div id="modalCaption"></div>
-</div>
 </body>
 </html>
