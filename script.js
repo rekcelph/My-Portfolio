@@ -37,43 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── Cat Eyes Cursor Tracking (desktop only) ──────────────────────────────
-    if (window.matchMedia('(pointer: fine)').matches) {
-        const pupilInitialPositions = new Map();
-
-        document.querySelectorAll('.pupil').forEach(pupil => {
-            pupilInitialPositions.set(pupil, {
-                cx: parseFloat(pupil.getAttribute('cx')),
-                cy: parseFloat(pupil.getAttribute('cy'))
-            });
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            document.querySelectorAll('.pupil').forEach(pupil => {
-                const svg     = pupil.closest('svg');
-                const svgRect = svg.getBoundingClientRect();
-
-                const pupilCx = parseFloat(pupil.getAttribute('cx'));
-                const pupilCy = parseFloat(pupil.getAttribute('cy'));
-
-                const pupilScreenX = svgRect.left + (pupilCx / 100) * svgRect.width;
-                const pupilScreenY = svgRect.top  + (pupilCy / 100) * svgRect.height;
-
-                const angle     = Math.atan2(e.clientY - pupilScreenY, e.clientX - pupilScreenX);
-                const maxOffset = 3;
-                const offsetX   = Math.cos(angle) * maxOffset;
-                const offsetY   = Math.sin(angle) * maxOffset;
-
-                const initialPos = pupilInitialPositions.get(pupil);
-                const offsetXSvg = (offsetX / svgRect.width)  * 100;
-                const offsetYSvg = (offsetY / svgRect.height) * 100;
-
-                pupil.setAttribute('cx', initialPos.cx + offsetXSvg);
-                pupil.setAttribute('cy', initialPos.cy + offsetYSvg);
-            });
-        });
-    }
-
     // ── Dark Mode Toggle ──────────────────────────────────────────────────────
     const darkModeIcon = document.getElementById('darkMode-icon');
 
@@ -245,6 +208,102 @@ document.addEventListener('DOMContentLoaded', () => {
             contactModal.style.display = 'none';
         }
     });
+
+    // ── Profile Music + Beat Animation ──────────────────────────────────────
+    const profilePic   = document.querySelector('.profile-pic');
+    const profileAudio = document.getElementById('profileMusic');
+    const canvas       = document.getElementById('beatCanvas');
+    const ctx          = canvas ? canvas.getContext('2d') : null;
+
+    let audioCtx, analyser, source, dataArray, animFrame;
+    let audioReady = false;
+
+    function setupAudio() {
+        if (audioReady) return;
+        audioCtx  = new (window.AudioContext || window.webkitAudioContext)();
+        analyser  = audioCtx.createAnalyser();
+        analyser.fftSize = 256;
+        source    = audioCtx.createMediaElementSource(profileAudio);
+        source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+        dataArray = new Uint8Array(analyser.frequencyBinCount);
+        audioReady = true;
+    }
+
+    function beatLoop() {
+        animFrame = requestAnimationFrame(beatLoop);
+        analyser.getByteFrequencyData(dataArray);
+
+        // ── Draw circular visualizer ──
+        const W  = canvas.width;
+        const H  = canvas.height;
+        const cx = W / 2;
+        const cy = H / 2;
+        const innerRadius = 88;   // just outside the profile pic edge (80px radius)
+        const bars        = 80;
+        const angleStep   = (Math.PI * 2) / bars;
+
+        ctx.clearRect(0, 0, W, H);
+
+        for (let i = 0; i < bars; i++) {
+            const freqIndex = Math.floor(i * dataArray.length / bars);
+            const value     = dataArray[freqIndex] / 255;
+            const barLen    = value * 45 + 3;
+
+            const angle = i * angleStep - Math.PI / 2; // start at top
+            const x1 = cx + Math.cos(angle) * innerRadius;
+            const y1 = cy + Math.sin(angle) * innerRadius;
+            const x2 = cx + Math.cos(angle) * (innerRadius + barLen);
+            const y2 = cy + Math.sin(angle) * (innerRadius + barLen);
+
+            const grad = ctx.createLinearGradient(x1, y1, x2, y2);
+            grad.addColorStop(0, `rgba(102, 126, 234, ${0.6 + value * 0.4})`);
+            grad.addColorStop(1, `rgba(118, 75, 162,  ${value * 0.5})`);
+
+            ctx.strokeStyle = grad;
+            ctx.lineWidth   = 2.5;
+            ctx.lineCap     = 'round';
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+        }
+
+        // ── Profile pic pulse ──
+        let bass = 0;
+        for (let i = 0; i < 12; i++) bass += dataArray[i];
+        bass = bass / 12;
+
+        const intensity = bass / 255;
+        const scale     = 1 + intensity * 0.08;
+        const glow      = Math.round(intensity * 35);
+        const opacity   = 0.3 + intensity * 0.7;
+
+        profilePic.style.transform = `scale(${scale})`;
+        profilePic.style.boxShadow =
+            `0 0 ${glow}px rgba(102, 126, 234, ${opacity}),
+             0 0 ${glow * 2}px rgba(118, 75, 162, ${opacity * 0.5})`;
+    }
+
+    if (profilePic && profileAudio && canvas) {
+        profilePic.addEventListener('mouseenter', () => {
+            setupAudio();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            profileAudio.play();
+            canvas.classList.add('is-playing');
+            beatLoop();
+        });
+
+        profilePic.addEventListener('mouseleave', () => {
+            profileAudio.pause();
+            profileAudio.currentTime = 0;
+            cancelAnimationFrame(animFrame);
+            canvas.classList.remove('is-playing');
+            if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+            profilePic.style.transform = 'scale(1)';
+            profilePic.style.boxShadow = '';
+        });
+    }
 
 }); // end DOMContentLoaded
 
