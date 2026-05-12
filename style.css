@@ -139,26 +139,7 @@ body.dark-mode .nav-link.active { color: #a78bfa !important; background: rgba(10
     color: #764ba2;
 }
 
-/* ── Cats Background ── */
-.cats-container {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-.cat {
-    position: absolute;
-    opacity: 0.8;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-}
-.cat svg { display: block; }
-.pupil { transition: cx 0.05s ease-out, cy 0.05s ease-out; }
-.cat line {
-    transition: stroke 0.3s ease;
-    transform-origin: center;
-    animation: twitch 3s infinite ease-in-out;
-}
+
 
 /* ── Hero / Home ── */
 .home-hero {
@@ -192,7 +173,31 @@ body.dark-mode .nav-link.active { color: #a78bfa !important; background: rgba(10
     border-color: #667eea;
 }
 
-/* Download CV button */
+/* Profile visualizer ring */
+.profile-ring-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#beatCanvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 320px;
+    height: 320px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#beatCanvas.is-playing {
+    opacity: 1;
+}
+
+
 .btn {
     position: relative;
     overflow: hidden;
@@ -330,13 +335,14 @@ body.dark-mode .nav-link.active { color: #a78bfa !important; background: rgba(10
 
 /* ── Certifications ── */
 .certifications-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+/* Ensure the Bulma columns inside certifications stretch full width */
+.certifications-container .columns {
+    width: 100%;
+    margin: 0;
 }
 .certifications {
     animation: slideUp 0.8s ease 0.2s backwards;
@@ -367,14 +373,7 @@ body.dark-mode .nav-link.active { color: #a78bfa !important; background: rgba(10
     width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease;
 }
 .certification-card:hover .cert-img-container img { transform: scale(1.1); }
-.cert-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(125,42,232,0.4);
-    display: flex; justify-content: center; align-items: center;
-    opacity: 0; transition: 0.3s ease;
-}
-.certification-card:hover .cert-overlay { opacity: 1; }
-.cert-overlay i { font-size: 3rem; color: white; cursor: pointer; }
+
 
 /* ── Contact Section ── */
 .contact-info {
@@ -403,7 +402,11 @@ body.dark-mode .nav-link.active { color: #a78bfa !important; background: rgba(10
 /* Contact link hover */
 .contact-link {
     transition: transform 0.3s ease, color 0.3s ease;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
 }
 .contact-link:hover {
     transform: translateY(-5px);
@@ -442,6 +445,12 @@ body.dark-mode {
 body.dark-mode .navbar {
     background-color: #2a2a2a !important;
 }
+body.dark-mode .navbar-burger span {
+    background-color: #e0e0e0 !important;
+}
+body.dark-mode .navbar-burger:hover span {
+    background-color: #a78bfa !important;
+}
 body.dark-mode .navbar-item,
 body.dark-mode .nav-link {
     color: #e0e0e0 !important;
@@ -464,8 +473,7 @@ body.dark-mode .project-card  {
 }
 body.dark-mode .project-card .title   { color: #e0e0e0; }
 body.dark-mode .project-card .content { color: #b0b0b0; }
-body.dark-mode .cat line  { stroke: #aaa; }
-body.dark-mode .cat path  { stroke: #ff9fb2; opacity: 0.8; }
+
 body.dark-mode .contact-item p { color: #e0e0e0; }
 
 /* ── Scroll lock (mobile menu open) ──
@@ -599,6 +607,7 @@ body.dark-mode .contact-item p { color: #e0e0e0; }
         width: 50% !important;
         flex: 0 0 50% !important;
         padding: 0.4rem !important;
+        box-sizing: border-box !important;
     }
     .cert-img-container { height: 130px; }
 
@@ -621,8 +630,7 @@ body.dark-mode .contact-item p { color: #e0e0e0; }
     /* Section headings */
     .section-heading { font-size: 1.6rem !important; margin-bottom: 1.5rem !important; }
 
-    /* Hide cats on small screens */
-    .cats-container { display: none; }
+
 
     /* Contact stacking (generic) */
     .contact-level { flex-direction: column; gap: 2rem; }
