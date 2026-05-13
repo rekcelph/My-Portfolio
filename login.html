@@ -8,6 +8,32 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Dark mode applied before render */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        body.dark-mode .custom-header {
+            background: rgba(26, 26, 26, 0.88) !important;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.18);
+        }
+        /* Dark mode toggle on login */
+        #darkMode-icon {
+            cursor: pointer;
+            font-size: 20px;
+            width: 38px; height: 38px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            border: 1.5px solid rgba(102, 126, 234, 0.25);
+            transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease;
+            color: #667eea;
+        }
+        #darkMode-icon:hover {
+            transform: rotate(20deg) scale(1.1);
+            background: rgba(102, 126, 234, 0.12);
+            border-color: #667eea;
+            color: #764ba2;
+        }
         .login-card {
             background: rgba(255, 255, 255, 0.45);
             backdrop-filter: blur(15px);
@@ -65,6 +91,20 @@
 </head>
 <body>
 
+    <!-- ── NAVBAR ── -->
+    <nav class="navbar is-white is-fixed-top custom-header" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="login.html" class="navbar-item logo">MyPortfolio.</a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-end" style="padding-right: 1rem;">
+                <div class="navbar-item">
+                    <div id="darkMode-icon"><i class='bx bx-moon'></i></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="cats-container"></div>
 
     <section class="hero is-fullheight is-visible" style="opacity: 1; transform: none; filter: none;">
@@ -98,15 +138,34 @@
     </section>
 
     <script>
-        // Add to the bottom of script.js
-    const loginBtn = document.getElementById('loginBtn');
+        // Dark mode persistence
+        const darkModeIcon = document.getElementById('darkMode-icon');
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            const i = darkModeIcon ? darkModeIcon.querySelector('i') : null;
+            if (i) i.className = 'bx bx-sun';
+        }
+        if (darkModeIcon) {
+            darkModeIcon.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const icon = darkModeIcon.querySelector('i');
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('darkMode', 'enabled');
+                    if (icon) icon.className = 'bx bx-sun';
+                } else {
+                    localStorage.setItem('darkMode', 'disabled');
+                    if (icon) icon.className = 'bx bx-moon';
+                }
+            });
+        }
 
-    if (loginBtn) {
-    loginBtn.addEventListener('click', () => {
-        // You can add validation logic here later if needed
-        window.location.href = 'index.html'; 
-        });
-    }
+        // Login button
+        const loginBtn = document.getElementById('loginBtn');
+        if (loginBtn) {
+            loginBtn.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+        }
     </script>
 </body>
 </html>

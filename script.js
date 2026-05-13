@@ -98,14 +98,27 @@ document.addEventListener('DOMContentLoaded', () => {
             if (href && href.startsWith('#')) {
                 e.preventDefault();
                 closeMobileMenu();
-                setTimeout(() => {
-                    const target = document.querySelector(href);
-                    if (target) target.scrollIntoView({ behavior: 'smooth' });
-                }, 50);
-            }
 
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
+                // Jump animation on the clicked link
+                link.classList.remove('jumping');
+                void link.offsetWidth; // force reflow to restart animation
+                link.classList.add('jumping');
+                link.addEventListener('animationend', () => link.classList.remove('jumping'), { once: true });
+
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // Wait for the next two frames to ensure the menu closure
+                // is fully painted before scrolling (fixes double‑click issue)
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    });
+                });
+            }
         });
     });
 
@@ -114,25 +127,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
+                // Small stagger so back-to-back sections don't snap simultaneously
+                const delay = entry.target.dataset.revealDelay || 0;
+                setTimeout(() => {
+                    entry.target.classList.add('is-visible');
+                }, delay);
                 revealObserver.unobserve(entry.target);
             }
         });
     }, {
-        threshold:   0.05,
-        rootMargin: '0px 0px -5% 0px'
+        threshold:   0.08,
+        rootMargin: '0px 0px -4% 0px'
     });
 
-    document.querySelectorAll('section[id]').forEach(s => revealObserver.observe(s));
+    document.querySelectorAll('section[id]').forEach((s, i) => {
+        s.dataset.revealDelay = i === 0 ? 0 : 60; // hero instant, rest slight stagger
+        revealObserver.observe(s);
+    });
 
     // Nav highlight — uses scroll position directly so it never skips a section
-    // when scrolling up or when sections are short
     function updateActiveNav() {
-        const scrollY    = window.scrollY + 80; // offset for navbar height
-        const sections   = Array.from(document.querySelectorAll('section[id]'));
-        let current      = sections[0];
+        // Match CSS scroll-margin-top (72px) + small buffer so the active link
+        // switches at the exact moment the section title clears the navbar.
+        const scrollY  = window.scrollY + 80;
+        const sections = Array.from(document.querySelectorAll('section[id]'));
+        let current    = sections[0];
 
         sections.forEach(section => {
+            // offsetTop is the section's natural top — same reference scrollIntoView uses
             if (section.offsetTop <= scrollY) current = section;
         });
 
@@ -307,102 +329,102 @@ document.addEventListener('DOMContentLoaded', () => {
 
 }); // end DOMContentLoaded
 
-    // ════════════════════════════════════════════════
-    // IMPRESSIVE ANIMATIONS
-    // ════════════════════════════════════════════════
+// ════════════════════════════════════════════════
+// IMPRESSIVE ANIMATIONS
+// ════════════════════════════════════════════════
 
-    // ── 1. Scroll Progress Bar ────────────────────────────────────────────────
-    const progressBar = document.getElementById('scrollProgress');
-    function updateProgress() {
-        const scrollTop    = window.scrollY;
-        const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
-        const pct          = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        if (progressBar) progressBar.style.width = pct + '%';
-    }
-    window.addEventListener('scroll', updateProgress, { passive: true });
+// ── 1. Scroll Progress Bar ────────────────────────────────────────────────
+const progressBar = document.getElementById('scrollProgress');
+function updateProgress() {
+    const scrollTop    = window.scrollY;
+    const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
+    const pct          = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
 
-    // ── 2. Typed + Glitch Intro ───────────────────────────────────────────────
-    const glitchEl   = document.querySelector('.glitch-text');
-    const fullText   = glitchEl ? glitchEl.getAttribute('data-text') : '';
+// ── 2. Typed + Glitch Intro ───────────────────────────────────────────────
+const glitchEl   = document.querySelector('.glitch-text');
+const fullText   = glitchEl ? glitchEl.getAttribute('data-text') : '';
 
-    if (glitchEl && fullText) {
-        glitchEl.textContent  = '';
-        glitchEl.classList.add('typing');
+if (glitchEl && fullText) {
+    glitchEl.textContent  = '';
+    glitchEl.classList.add('typing');
 
-        let i = 0;
-        const typeSpeed = 60; // ms per character
+    let i = 0;
+    const typeSpeed = 60; // ms per character
 
-        function typeChar() {
-            if (i < fullText.length) {
-                glitchEl.textContent += fullText[i];
-                i++;
-                setTimeout(typeChar, typeSpeed);
-            } else {
-                // Done typing — remove cursor, start glitch loop
-                glitchEl.classList.remove('typing');
-            }
+    function typeChar() {
+        if (i < fullText.length) {
+            glitchEl.textContent += fullText[i];
+            i++;
+            setTimeout(typeChar, typeSpeed);
+        } else {
+            // Done typing — remove cursor, start glitch loop
+            glitchEl.classList.remove('typing');
         }
-        // Small delay before typing starts so page has settled
-        setTimeout(typeChar, 600);
     }
+    // Small delay before typing starts so page has settled
+    setTimeout(typeChar, 600);
+}
 
-    // ── 3. 3D Tilt Cards ─────────────────────────────────────────────────────
-    // Only on pointer: fine devices (mouse), not touch
-    if (window.matchMedia('(pointer: fine)').matches) {
+// ── 3. 3D Tilt Cards ─────────────────────────────────────────────────────
+// Only on pointer: fine devices (mouse), not touch
+if (window.matchMedia('(pointer: fine)').matches) {
 
-        document.querySelectorAll('.tilt-card').forEach(card => {
-            // Inject shine div if not already there
-            if (!card.querySelector('.tilt-shine')) {
-                const shine = document.createElement('div');
-                shine.className = 'tilt-shine';
-                card.appendChild(shine);
-            }
+    document.querySelectorAll('.tilt-card').forEach(card => {
+        // Inject shine div if not already there
+        if (!card.querySelector('.tilt-shine')) {
+            const shine = document.createElement('div');
+            shine.className = 'tilt-shine';
+            card.appendChild(shine);
+        }
 
-            card.addEventListener('mousemove', (e) => {
-                const rect    = card.getBoundingClientRect();
-                const cx      = rect.left + rect.width  / 2;
-                const cy      = rect.top  + rect.height / 2;
-                const dx      = e.clientX - cx;
-                const dy      = e.clientY - cy;
-                const maxTilt = 12; // degrees
+        card.addEventListener('mousemove', (e) => {
+            const rect    = card.getBoundingClientRect();
+            const cx      = rect.left + rect.width  / 2;
+            const cy      = rect.top  + rect.height / 2;
+            const dx      = e.clientX - cx;
+            const dy      = e.clientY - cy;
+            const maxTilt = 12; // degrees
 
-                const rotY =  (dx / (rect.width  / 2)) * maxTilt;
-                const rotX = -(dy / (rect.height / 2)) * maxTilt;
+            const rotY =  (dx / (rect.width  / 2)) * maxTilt;
+            const rotX = -(dy / (rect.height / 2)) * maxTilt;
 
-                card.style.transform =
-                    `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.03)`;
+            card.style.transform =
+                `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.03)`;
 
-                // Shine position
-                const shineX = ((e.clientX - rect.left) / rect.width)  * 100;
-                const shineY = ((e.clientY - rect.top)  / rect.height) * 100;
-                card.style.setProperty('--shine-x', shineX + '%');
-                card.style.setProperty('--shine-y', shineY + '%');
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform =
-                    'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-            });
+            // Shine position
+            const shineX = ((e.clientX - rect.left) / rect.width)  * 100;
+            const shineY = ((e.clientY - rect.top)  / rect.height) * 100;
+            card.style.setProperty('--shine-x', shineX + '%');
+            card.style.setProperty('--shine-y', shineY + '%');
         });
-    }
 
-    // ── 4. Magnetic Buttons ───────────────────────────────────────────────────
-    if (window.matchMedia('(pointer: fine)').matches) {
-
-        document.querySelectorAll('.magnetic').forEach(btn => {
-            const strength = 0.35; // 0 = no pull, 1 = full cursor follow
-
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const cx   = rect.left + rect.width  / 2;
-                const cy   = rect.top  + rect.height / 2;
-                const dx   = (e.clientX - cx) * strength;
-                const dy   = (e.clientY - cy) * strength;
-                btn.style.transform = `translate(${dx}px, ${dy}px)`;
-            });
-
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'translate(0px, 0px)';
-            });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform =
+                'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
         });
-    }
+    });
+}
+
+// ── 4. Magnetic Buttons ───────────────────────────────────────────────────
+if (window.matchMedia('(pointer: fine)').matches) {
+
+    document.querySelectorAll('.magnetic').forEach(btn => {
+        const strength = 0.35; // 0 = no pull, 1 = full cursor follow
+
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const cx   = rect.left + rect.width  / 2;
+            const cy   = rect.top  + rect.height / 2;
+            const dx   = (e.clientX - cx) * strength;
+            const dy   = (e.clientY - cy) * strength;
+            btn.style.transform = `translate(${dx}px, ${dy}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0px, 0px)';
+        });
+    });
+}
