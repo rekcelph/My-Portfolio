@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | EndenciaRekcel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        body.dark-mode .login-card {
+            background: rgba(26, 26, 26, 0.6);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .login-input {
+            background: rgba(255, 255, 255, 0.6) !important;
+            border: 1.5px solid rgba(102, 126, 234, 0.2) !important;
+            color: #333 !important;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .login-input {
+            background: rgba(40, 40, 40, 0.6) !important;
+            border: 1.5px solid rgba(102, 126, 234, 0.3) !important;
+            color: #eee !important;
+        }
+
+        .login-input:focus {
+            border-color: #667eea !important;
+            box-shadow: 0 0 0 0.125em rgba(102, 126, 234, 0.25) !important;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            font-weight: 700;
+            width: 100%;
+            height: 3rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cats-container"></div>
+
+    <section class="hero is-fullheight is-visible" style="opacity: 1; transform: none; filter: none;">
+        <div class="hero-body is-justify-content-center">
+            <div class="login-card has-text-centered">
+                <h1 class="title is-3 gradient-text mb-5">Welcome Back</h1>
+                
+                <div class="field">
+                    <div class="control has-icons-left">
+                        <input class="input login-input" type="text" placeholder="Username">
+                        <span class="icon is-small is-left">
+                            <i class='bx bxs-user'></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control has-icons-left">
+                        <input class="input login-input" type="password" placeholder="Password">
+                        <span class="icon is-small is-left">
+                            <i class='bx bxs-lock-alt'></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field mt-5">
+                    <button id="loginBtn" class="submit-btn magnetic">Access Portfolio</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add to the bottom of script.js
+    const loginBtn = document.getElementById('loginBtn');
+
+    if (loginBtn) {
+    loginBtn.addEventListener('click', () => {
+        // You can add validation logic here later if needed
+        window.location.href = 'index.html'; 
+        });
+    }
+    </script>
+</body>
+</html>
